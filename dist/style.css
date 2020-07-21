@@ -24,6 +24,7 @@ img {
 
 .active {
   background-color: rgba(27, 185, 35, 0.788);
+  border-bottom: 2px solid black;
 }
 
 .tab:hover {
