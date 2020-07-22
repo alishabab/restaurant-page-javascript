@@ -4,30 +4,23 @@ import loadMenu from './menu';
 
 import loadContact from './contact';
 
-const contentDiv = document.querySelector('#content');
+let activeTab = null;
 const tabs = document.querySelectorAll('.tab');
 
-const removeClass = (element, className) => {
-  element.classList.remove(className);
-};
-
-const addClass = (element, className) => {
-  element.classList.add(className);
-};
-
 const clickHandler = (tab) => {
-  tabs.forEach(tab => removeClass(tab, 'active'));
+  if (activeTab) {
+    activeTab.classList.remove('active');
+  }
+  activeTab = tab;
+  tab.classList.add('active');
   if (tab.innerText === 'Home') {
-    initialPageLoad(contentDiv);
-    addClass(tab, 'active');
+    initialPageLoad();
   }
   if (tab.innerText === 'Menu') {
-    loadMenu(contentDiv);
-    addClass(tab, 'active');
+    loadMenu();
   }
   if (tab.innerText === 'Contact') {
-    loadContact(contentDiv);
-    addClass(tab, 'active');
+    loadContact();
   }
 };
 
@@ -35,4 +28,4 @@ tabs.forEach((tab) => {
   tab.addEventListener('click', () => clickHandler(tab));
 });
 
-initialPageLoad(contentDiv);
+initialPageLoad();
